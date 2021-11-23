@@ -84,7 +84,7 @@ sudo reboot
 uname -a
 ```
 After building kernel:<br />
-kiran@ubuntu:~$ uname -a<br />
+devki@ubuntu:~$ uname -a<br />
 Linux ubuntu 5.12.0-rc7+ #1 SMP Sun Nov 21 13:34:02 PDT 2021 x86_64 x86_64 x86_64 GNU/Linux
 
 ### Implement the Assignment Functionalities:
@@ -141,4 +141,8 @@ sudo apt-get install cpuid
    ./test_assignment2
 
 ## Output:
+
+![After code changes](https://user-images.githubusercontent.com/78829969/142987823-3b828ec4-7bec-47d6-899b-9e577b9cf44c.PNG)
+
+![Virt Manager](https://user-images.githubusercontent.com/78829969/142987834-2cf8920a-57e7-4cda-a0eb-c46c6da81d85.PNG)
 

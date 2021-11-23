@@ -1,0 +1,12 @@
+#!/bin/bash
+cpuid="0x4FFFFFFF"
+output=$(cpuid -l $cpuid -1)
+eax=$(echo $output | grep 0x4fffffff | awk '{print toupper($4)}' | cut -c7-14)
+exits=$(echo "ibase=16; $eax" | bc)
+echo "CPUID($cpuid), exits=$exits"
+cpuid="0x4FFFFFFE"
+output=$(cpuid -l $cpuid -1)
+ebx=$(echo $output | grep 0x4ffffffe | awk '{print toupper($5)}' | cut -c7-14)
+ecx=$(echo $output | grep 0x4ffffffe | awk '{print toupper($6)}' | cut -c7-14)
+cycles=$(echo "ibase=16; $ebx$ecx" | bc)
+echo "CPUID($cpuid), cycles spent in exit=$cycles"

@@ -140,9 +140,11 @@ sudo apt-get install cpuid
 
    ./test_assignment2
 
-## Output:
+After code changes:<br />
 
 ![After code changes](https://user-images.githubusercontent.com/78829969/142987823-3b828ec4-7bec-47d6-899b-9e577b9cf44c.PNG)
+
+Virt Manager:<br />
 
 ![Virt Manager](https://user-images.githubusercontent.com/78829969/142987834-2cf8920a-57e7-4cda-a0eb-c46c6da81d85.PNG)
 

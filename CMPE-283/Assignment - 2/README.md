@@ -27,7 +27,7 @@ The assignment is to modify the CPUID emulation code in KVM to report back addit
 ### Venkat Mannam (SJSU ID: 015263326)
 
 * Setup the environment in macOS using VMware Fusion 12 and downloaded the Linux ISO file. 
-* Built a VM successfully in the first attempt by allocating 200GB storage and 4GB RAM to it. 
+* Built a VM successfully in the first attempt by allocating 150GB storage and 8GB RAM to it.
 * Built another VM inside using the Ubuntu ISO file.
 * Tested the machine to check its capability for VMX virtualization. 
 * Researched and discussed MSRs to be read in the SDM and contributed to the testing of the code.
@@ -41,7 +41,7 @@ The assignment is to modify the CPUID emulation code in KVM to report back addit
 
 Part 1: How we built the kernel
 
-1. We followed the steps to install the VM, then Ubuntu on our Intel-based MacBook pro. Installed ISO - Ubuntu, allocated disk space of 200 GB.
+1. We followed the steps to install the VM, then Ubuntu on our Intel-based MacBook pro. Installed ISO - Ubuntu, allocated disk space of 150GB.
 
 2. We have cloned the Linux github repository, using following command: 
 ```

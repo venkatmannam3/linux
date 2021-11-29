@@ -35,56 +35,6 @@ For leaf nodes 0x4FFFFFFD and 0x4FFFFFFC, if %ecx (on input) contains a value no
 
 **Prerequisite:** A working assignment 1 configuration.
 
-#### Steps followed to complete the assignment:
-
-Part 1: How we built the kernel
-
-1. We followed the steps to install the VM, then Ubuntu on our Intel-based MacBook pro. Installed ISO - Ubuntu, allocated disk space of 150GB.
-
-2. We have cloned the Linux github repository, using following command: 
-```
-git clone https://github.com/torvalds/linux.git
-```
-3. We followed the insructions given in the Assignment pdf to build kernel.
-
-4. Check the Linux Version (old):<br />
-```
-uname -a
-```
-5. Build the kernel by running the below command:
-```
-sudo apt-get install build-essential kernel-package fakeroot libncurses5-dev libssl-dev ccache bison flex libelf-dev
-```
-6. Check the kernel version and copy the appropriate config file into the cloned linux folder: 
-```
-uname -r 
-```
-```
-cd linux
-```
-```
-cp /boot/config-`uname -r` .config
-```
-7. Make the oldconfig file to set the required configuration for building the kernel and just hit enter for every question:
-``` 
-make oldconfig
-```
-8. Run the following instruction in "Linux" folder:
-```
-make -j 2 modules && make -j 2 && sudo make modules_install  && sudo make install
-```
-9. Then reboot the Ubuntu machine: 
-```
-sudo reboot
-```
-10. Verify that the newer kernel is being used after reboot.
-```
-uname -a
-```
-After building kernel:<br />
-devki@ubuntu:~$ uname -a<br />
-Linux ubuntu 5.12.0-rc7+ #1 SMP Sun Nov 21 13:34:02 PDT 2021 x86_64 x86_64 x86_64 GNU/Linux
-
 ### Implement the Assignment Functionalities:
 
 We edited cpuid.c and vmx.c for implementing code for calculating total number of exits and the total time spent processing all exits.

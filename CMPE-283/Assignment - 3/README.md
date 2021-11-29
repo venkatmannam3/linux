@@ -74,13 +74,23 @@ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils vir
 virsh -c qemu:///system list
 ```
 5. Now open virtual machine manager and using Ubuntu ISO file create inner vm.
-
+```
+sudo virt-manager
+```
 6. Open terminal and install cpuid using below command:
 ```
 sudo apt-get update
 ```
 ```
 sudo apt-get install cpuid
+```
+7. Run the test script using bash command.
+```
+bash test.sh
+```
+8. Now run dmesg in the outer vm to view the ouput from running the test script.
+```
+dmesg
 ```
 ## Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail? 
 

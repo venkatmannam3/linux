@@ -103,17 +103,19 @@ dmesg
 
 ## Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail? 
 
+- The frequency of exits, i.e., the number of exits does not increase at a stable rate. During certain VM operations more exits are performed. For example, in our system, for exit no. 48 the exits performed was the highest. i.e 0x0005b605 in hexadecimal which corresponds to 374277 exits in decimal value. A full VM reboot in our system took approximately around 120,000 exits. This can be observed from the attached screenshot as well. (Screenshots can be found in the folder named Assignment-3_Screenshots).
+
 ## Q4. Of the exit types defined in the SDM, which are the most frequent? Least?
 
 * According to the output:
 
 The most frequent were, 
 
-- #### Exit number 48 - EPT Violation
-- #### Exit Number 7 - Interrupt window
+- **Exit number 48 - EPT Violation**
+- **Exit Number 7 - Interrupt window**
 
 The least frequent were,
 
-- #### Exit number 29 - MOV DR
-- #### Exit number 54 - WBINVD
-- #### Exit number 55 - XSETBV
+- **Exit number 29 - MOV DR**
+- **Exit number 54 - WBINVD**
+- **Exit number 55 - XSETBV**

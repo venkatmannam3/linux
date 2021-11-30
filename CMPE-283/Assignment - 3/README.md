@@ -51,7 +51,7 @@ sudo bash
 ```
 3. Install the module packages: 
 ```
-sudo make INSTALL_MOD_STRIP=1 modules_install
+sudo make INSTALL_MOD_STRIP=1 modules_install && make install
 ```
 4. Stop the nested VM which is currently running.
 
@@ -71,11 +71,34 @@ modprobe kvm
 ```
 modprobe kvm_intel
 ```
-7. Start the nested VM.
-
-8. Finally, use the below command, 
+7. Create an Inner Virtual Machine (inside a VM) using the below commands:
 ```
-dmesg  
+  sudo apt update
+```
+```
+  sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+```
+```
+  sudo systemctl status libvirtd
+```
+```
+  sudo systemctl enable --now libvirtd
+```
+```
+  sudo apt install virt-manager
+```
+```
+  sudo virt-manager
+```
+8. Install ubuntu 20.4 iso image. Also, download the CPUID debian Package and install it.
+
+9. Run the below commands in the inner VM (which is inside a VM):<br />
+  cpuid -l 0X4ffffffc -s exit_number<br />
+  cpuid -l 0X4ffffffd -s exit_number
+
+10. Run the following command in the outer VM to get the output:
+```
+dmesg
 ```
 
 ## Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail? 

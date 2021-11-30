@@ -136,7 +136,7 @@ sudo apt-get install cpuid
 ```
 7. Create test program code in inner VM.
 
-8. Once the Guest VM is up, issue the following shell script test_assignment2 few times
+8. Once the Guest VM is up, issue the following shell script test_assignment2 few times:
 
    ./test_assignment2
 
@@ -148,3 +148,17 @@ Virt Manager:<br />
 
 ![Virt Manager](https://user-images.githubusercontent.com/78829969/142987834-2cf8920a-57e7-4cda-a0eb-c46c6da81d85.PNG)
 
+* Run the below commands in the inner VM (which is inside a VM):<br />  
+  cpuid -l 0X4fffffff -s exit_number<br />
+  cpuid -l 0X4ffffffe -s exit_number
+  
+  inner_vm:<br />
+  
+  ![image](https://user-images.githubusercontent.com/78829969/144047512-d7a6eafb-6bfc-48d7-b989-1cb5dd7ea5e7.png)
+
+* Run the following command in the outer VM to get the output:<br />
+  dmesg
+  
+  outer_vm:<br />
+  
+  ![image](https://user-images.githubusercontent.com/78829969/144047625-b7c352e2-b297-4a77-a2cb-b56c2d7a3bb4.png)

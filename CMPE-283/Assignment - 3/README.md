@@ -33,65 +33,51 @@ For leaf nodes 0x4FFFFFFD and 0x4FFFFFFC, if %ecx (on input) contains a value no
 
 ## Q2. Describe in detail the steps you used to complete the assignment. 
 
-**Prerequisite:** A working assignment 1 configuration.
+**Prerequisite:** A working previous assignment configuration and setup.
 
-### Implement the Assignment Functionalities:
+### Steps followed to implement the Assignment Functionalities:
 
-We edited cpuid.c and vmx.c for implementing code for calculating total number of exits and the total time spent processing all exits.
+1. Edit the files cpuid.c and vmx.c for implementing code for returning the number of exits for the exit number provided (on input), the time spent processing the exit number provided (on input) and the total time spent for that exit.<br />
 
-We modified function kvm_emulate_cpuid in the following file: linux/arch/x86/kvm/cupid.c, 
-and vmx_handle_exit in the following file: linux/arch/x86/kvm/vmx/vmx.c
+      The modified files cpuid.c and vmx.c can be found at linux/arch/x86/kvm/cupid.c and linux/arch/x86/kvm/vmx/vmx.c respectively.
 
-### Build the updated code: 
+2. After changing the code in KVM as per the assignment requirement, compile the code using the following command: 
+```
+make -j 4 modules
+```
+And then run the following command:
+```
+sudo bash
+```
+3. Install the module packages: 
+```
+sudo make INSTALL_MOD_STRIP=1 modules_install
+```
+4. Stop the nested VM which is currently running.
 
-1. After changing the code in KVM as per the assignment requirement, you can rebuild using the same “make” sequence commands or simply use the below command.
+5. On the host VM, run the following commands:  
 ```
-sudo make -j 2 modules M=arch/x86/kvm 
-```
-2. Load and unload the kvm kernel module (kvm.ko) and kvm-intel module (kvm-intel.ko) using the following commands:
-```
-sudo rmmod arch/x86/kvm/kvm-intel.ko
+rmmod kvm_intel
 ```
 ```
-sudo rmmod arch/x86/kvm/kvm.ko
+rmmod kvm 
+```
+The above command removes the old binaries of the kvm.
+
+6. Install the latest binaries using the below command,  
+```
+modprobe kvm
 ```
 ```
-sudo insmod arch/x86/kvm/kvm.ko
+modprobe kvm_intel
 ```
+7. Start the nested VM.
+
+8. Finally, use the below command, 
 ```
-sudo insmod arch/x86/kvm/kvm-intel.ko
+dmesg  
 ```
-3. To test changes, we need to create a VM using virt manager.
-Use the following command to install KVM, supporting packages and virt manager.
-```
-sudo apt-get update
-```
-```
-sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager 
-```
-4. Verify KVM Installation using the below command. You should see an empty list of virtual machines. This indicates that everything is working correctly.
-```
-virsh -c qemu:///system list
-```
-5. Now open virtual machine manager and using Ubuntu ISO file create inner vm.
-```
-sudo virt-manager
-```
-6. Open terminal and install cpuid using below command:
-```
-sudo apt-get update
-```
-```
-sudo apt-get install cpuid
-```
-7. Run the test script using bash command.
-```
-bash test.sh
-```
-8. Now run dmesg in the outer vm to view the ouput from running the test script.
-```
-dmesg
-```
+
 ## Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail? 
 
 ## Q4. Of the exit types defined in the SDM, which are the most frequent? Least?

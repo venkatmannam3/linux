@@ -104,3 +104,16 @@ dmesg
 ## Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail? 
 
 ## Q4. Of the exit types defined in the SDM, which are the most frequent? Least?
+
+* According to the output:
+
+The most frequent were, 
+
+- #### Exit number 48 - EPT Violation
+- #### Exit Number 7 - Interrupt window
+
+The least frequent were,
+
+- #### Exit number 29 - MOV DR
+- #### Exit number 54 - WBINVD
+- #### Exit number 55 - XSETBV
